@@ -1,10 +1,10 @@
 import { Dimensions } from "react-native";
 
-export default {
+const params = {
   blockSize: 30,
   borderSize: 5,
   fontSize: 15,
-  headerRation: 0.15, // Proporçao do painel superior na tela
+  headerRatio: 0.15, // Proporção do painel superior na tela
   difficultLevel: 0.1,
   getColumnsAmount() {
     const width = Dimensions.get("window").width;
@@ -12,7 +12,9 @@ export default {
   },
   getRowsAmount() {
     const totalHeight = Dimensions.get("window").height;
-    const boardHeight = totalHeight * (1 - this.headerRation);
+    const boardHeight = totalHeight * (1 - this.headerRatio);
     return Math.floor(boardHeight / this.blockSize);
   },
 };
+
+export default params;

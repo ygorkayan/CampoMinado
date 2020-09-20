@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableWithoutFeedback } from "react-native";
 import Style from "./FieldStyle";
 
 import Mine from "../Mine/Mine";
@@ -25,10 +25,15 @@ export default (props) => {
   const mina = <Text style={[Style.label, { color }]}>{nearMines}</Text>;
 
   return (
-    <View style={styleField}>
-      {!mined && opened && nearMines > 0 ? mina : false}
-      {mined && opened ? <Mine /> : false}
-      {flagged && !opened ? <Flag /> : false}
-    </View>
+    <TouchableWithoutFeedback
+      onPress={props.onOpen}
+      onLongPress={props.onSelect}
+    >
+      <View style={styleField}>
+        {!mined && opened && nearMines > 0 ? mina : false}
+        {mined && opened ? <Mine /> : false}
+        {flagged && !opened ? <Flag /> : false}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
